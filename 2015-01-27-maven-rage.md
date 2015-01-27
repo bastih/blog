@@ -3,11 +3,12 @@
 Sometimes you just want to compose a couple of steps differently for different scenarios.
 
 Say we want to invoke:
-  
-  mvn package cargo:redeploy integration-test
+
+    mvn package cargo:redeploy integration-test
   
 Then we could write a `Makefile`, o we can use the jetspeed:mvn plugin:
 
+```
   <project>
     <build>
       <plugins>
@@ -23,10 +24,12 @@ Then we could write a `Makefile`, o we can use the jetspeed:mvn plugin:
                 <dir>@rootdir@</dir>
                 <goals>package,cargo:redeploy,integration-test</goals>
               </target>
-
             </targets>
           </configuration>
         </plugin>
       </plugins>
     </build>
   </project>
+```
+
+Yet, in my tests, this was slower than just using a plain Makefile
